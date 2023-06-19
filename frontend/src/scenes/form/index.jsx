@@ -1,5 +1,4 @@
-import { Box, Button  } from "@mui/material";
-import { MuiFileInput } from 'mui-file-input'
+import { Box, Button, TextField, FormControl, Radio, RadioGroup, FormControlLabel, FormLabel } from "@mui/material";
 import { Formik } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -7,7 +6,7 @@ import Header from "../../components/Header";
 import React, { useContext, useState } from 'react'
 import { NavLink, useHistory } from 'react-router-dom'
 import { adddata } from '../../components/context/ContextProvider';
-
+import Stack from "@mui/material/Stack";
 
 const Form = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
@@ -139,19 +138,23 @@ const Form = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Gender"
-                onBlur={handleBlur}
-                value={inpval.gender}
-                onChange={setdata}
-                name="gender"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
+              <FormControl>
+                <FormLabel id="demo-row-radio-buttons-group-label">Gender</FormLabel>
+                <RadioGroup
+                  row
+                  aria-labelledby="demo-row-radio-buttons-group-label"
+                  label="Gender"
+                  onBlur={handleBlur}
+                  value={inpval.gender}
+                  onChange={setdata}
+                  name="gender"
+                >
+                  <FormControlLabel value="female" control={<Radio />} label="Female" />
+                  <FormControlLabel value="male" control={<Radio />} label="Male" />
+                  <FormControlLabel value="other" control={<Radio />} label="Other" />
+
+                </RadioGroup>
+              </FormControl>
               <TextField
                 fullWidth
                 variant="filled"
@@ -401,8 +404,26 @@ const Form = () => {
               />
               <TextField
                 fullWidth
+                label="Date of Birth"
+                type="date"
+                name="dob"
+                defaultValue="2017-05-24"
                 variant="filled"
-                type="text"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                onBlur={handleBlur}
+                value={inpval.dob}
+                onChange={setdata}
+                error={!!touched.firstName && !!errors.firstName}
+                helperText={touched.firstName && errors.firstName}
+                sx={{ gridColumn: "span 2" }}
+              />
+
+              {/* <TextField
+                fullWidth
+                variant="filled"
+                type="date"
                 label="Date of Birth"
                 onBlur={handleBlur}
                 value={inpval.dob}
@@ -411,7 +432,7 @@ const Form = () => {
                 error={!!touched.firstName && !!errors.firstName}
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
-              />
+              /> */}
               <TextField
                 fullWidth
                 variant="filled"
@@ -464,19 +485,29 @@ const Form = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-              <MuiFileInput 
+              {/* <TextField
                 fullWidth
                 variant="filled"
                 type="file"
                 label="Resume"
                 onBlur={handleBlur}
-                value={inpval.resume}
+                value={inpval.maritalstatus}
                 onChange={setdata}
-                name="resume"
+                name="maritalstatus"
                 error={!!touched.firstName && !!errors.firstName}
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
-              />
+              /> */}
+              <Stack direction="row" alignItems="center" spacing={2}>
+                <Button variant="contained" component="label">
+                  Resume Upload
+                  <input hidden accept="image/*" multiple type="file" />
+                </Button>
+              </Stack>
+              
+
+
+
             </Box>
             <Box display="flex" justifyContent="center" mt="20px">
               <Button type="submit" onClick={addinpdata} color="secondary" variant="contained">
