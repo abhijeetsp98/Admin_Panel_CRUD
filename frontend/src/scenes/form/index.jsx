@@ -485,10 +485,10 @@ const Form = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-              {/* <TextField
+              <TextField
                 fullWidth
                 variant="filled"
-                type="file"
+                type="text"
                 label="Resume"
                 onBlur={handleBlur}
                 value={inpval.maritalstatus}
@@ -497,13 +497,14 @@ const Form = () => {
                 error={!!touched.firstName && !!errors.firstName}
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
-              /> */}
-              <Stack direction="row" alignItems="center" spacing={2}>
+              />
+              {/* <Stack direction="row" alignItems="center" spacing={2}>
                 <Button variant="contained" component="label">
                   Resume Upload
                   <input hidden accept="image/*" multiple type="file" />
                 </Button>
-              </Stack>
+              </Stack> */}
+              
               
 
 
