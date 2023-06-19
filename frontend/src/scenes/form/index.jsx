@@ -1,4 +1,5 @@
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button  } from "@mui/material";
+import { MuiFileInput } from 'mui-file-input'
 import { Formik } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -463,10 +464,10 @@ const Form = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-              <TextField
+              <MuiFileInput 
                 fullWidth
                 variant="filled"
-                type="text"
+                type="file"
                 label="Resume"
                 onBlur={handleBlur}
                 value={inpval.resume}
