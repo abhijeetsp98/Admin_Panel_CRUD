@@ -1,6 +1,10 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
+import Button from '@mui/material/Button';
+import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
+import {Link} from "react-router-dom";
+
 import { mockDataTeam } from "../../data/mockData";
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
@@ -202,6 +206,9 @@ const Team = () => {
 
   return (
     <Box m="20px">
+      <Button variant="contained" href="/form" color="success"  startIcon={<LibraryAddIcon />}>
+        Add Candidate
+      </Button>
       <Header title="TEAM" subtitle="Managing the Team Members" />
       <Box
         m="40px 0 0 0"

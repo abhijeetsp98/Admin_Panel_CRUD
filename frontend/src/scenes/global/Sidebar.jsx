@@ -4,7 +4,10 @@ import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../../theme";
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+
+import {Person2, AssistantPhoto, CheckBox, Groups, FormatListBulleted,
+  School, InsertDriveFile, CalendarMonth, Shortcut, Message, HomeOutlined} from '@mui/icons-material';
+
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
@@ -118,9 +121,79 @@ const Sidebar = () => {
 
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
             <Item
-              title="Dashboard"
+              title="My Dashboard"
               to="/"
-              icon={<HomeOutlinedIcon />}
+              icon={<HomeOutlined />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Lead"
+              to="/"
+              icon={<AssistantPhoto />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Client"
+              to="/"
+              icon={<Person2 />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Requirement"
+              to="/"
+              icon={<CheckBox />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Candidate"
+              to="/team"
+              icon={<Groups />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Onboarding Task"
+              to="/"
+              icon={<FormatListBulleted />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="New Hire Management"
+              to="/"
+              icon={<School />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Temp Staffing"
+              to="/"
+              icon={<InsertDriveFile />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Source"
+              to="/"
+              icon={<Shortcut />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Calendar"
+              to="/calendar"
+              icon={<CalendarMonth />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Forum"
+              to="/calendar"
+              icon={<Message />}
               selected={selected}
               setSelected={setSelected}
             />
