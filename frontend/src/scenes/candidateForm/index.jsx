@@ -8,7 +8,7 @@ import { NavLink, useHistory } from 'react-router-dom'
 import { adddata } from '../../components/context/ContextProvider';
 import Stack from "@mui/material/Stack";
 
-const Form = () => {
+const CandidateForm = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
 
   const handleFormSubmit = (values) => {
@@ -545,4 +545,4 @@ const initialValues = {
   address2: "",
 };
 
-export default Form;
+export default CandidateForm;

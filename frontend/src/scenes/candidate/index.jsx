@@ -1,27 +1,13 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import Button from '@mui/material/Button';
 import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
-import {Link} from "react-router-dom";
-
-import { mockDataTeam } from "../../data/mockData";
-import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
-import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
-import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import Header from "../../components/Header";
-
-
 import React, { useState, useEffect, useContext } from 'react'
-import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
-import CreateIcon from '@mui/icons-material/Create';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import { NavLink } from 'react-router-dom';
- import { adddata, deldata } from '../../components/context/ContextProvider';
-import { updatedata } from '../../components/context/ContextProvider'
 
 
-const Team = () => {
+const Candidate = () => {
   var allData = [
     {
         "id": 3,
@@ -148,12 +134,6 @@ const Team = () => {
   const [getuserdata, setUserdata] = useState([]);
   console.log("getuserdata",getuserdata);
 
-  const { udata, setUdata } = useContext(adddata);
-
-  const {updata, setUPdata} = useContext(updatedata);
-
-  const {dltdata, setDLTdata} = useContext(deldata);
-
   const getdata = async () => {
 
       const res = await fetch("http://localhost:8001/getusers", {
@@ -181,35 +161,12 @@ const Team = () => {
       getdata();
   }, [])
 
-  const deleteuser = async (id) => {
-
-      const res2 = await fetch(`deleteuser/${id}`, {
-          method: "DELETE",
-          headers: {
-              "Content-Type": "application/json"
-          }
-      });
-
-      const deletedata = await res2.json();
-      console.log(deletedata);
-
-      if (res2.status === 422 || !deletedata) {
-          console.log("error");
-      } else {
-          console.log("user deleted");
-          setDLTdata(deletedata)
-          getdata();
-      }
-
-  }
-
-
   return (
     <Box m="20px">
-      <Button variant="contained" href="/form" color="success"  startIcon={<LibraryAddIcon />}>
+      <Button variant="contained" href="/candidateForm" color="success"  startIcon={<LibraryAddIcon />}>
         Add Candidate
       </Button>
-      <Header title="TEAM" subtitle="Managing the Team Members" />
+      <Header title="Candidate" subtitle="Managing the Candidate" />
       <Box
         m="40px 0 0 0"
         height="75vh"
@@ -246,4 +203,4 @@ const Team = () => {
   );
 };
 
-export default Team;
+export default Candidate;

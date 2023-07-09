@@ -136,21 +136,21 @@ const Sidebar = () => {
             />
             <Item
               title="Client"
-              to="/"
+              to="/client"
               icon={<Person2 />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="Requirement"
-              to="/"
+              to="/requirement"
               icon={<CheckBox />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="Candidate"
-              to="/team"
+              to="/candidate"
               icon={<Groups />}
               selected={selected}
               setSelected={setSelected}
