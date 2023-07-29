@@ -157,7 +157,21 @@ const ClientForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-              <TextField
+              <FormControl variant="filled">
+                <InputLabel id="demo-simple-select-filled-label">Gender</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  onChange={handleChange}
+                >
+                  
+                  <MenuItem value={10}>Male</MenuItem>
+                  <MenuItem value={20}>Female</MenuItem>
+                  <MenuItem value={30}>Other</MenuItem>
+                </Select>
+              </FormControl>
+
+              {/* <TextField
                 fullWidth
                 variant="filled"
                 type="text"
@@ -169,7 +183,7 @@ const ClientForm = () => {
                 error={!!touched.firstName && !!errors.firstName}
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
-              />
+              /> */}
               <TextField
                 fullWidth
                 variant="filled"
@@ -235,6 +249,7 @@ const ClientForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
+             
               <TextField
                 fullWidth
                 variant="filled"
@@ -556,9 +571,31 @@ const ClientForm = () => {
                   <input hidden accept="image/*" multiple type="file" />
                 </Button>
               </Stack> */}
-              
-              
+               <divider/>
+                  
 
+              <divider/>
+              <List>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="Resume" />
+                  </ListItemButton>
+                  <TextField  label="Resume" type={"file"} inputProps={{accept:"application/pdf"}}/>
+                </ListItem>
+              </List>
+              <divider/>
+               
+               <divider/>
+               <divider/>
+               
+              <List>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="Addhar" />
+                  </ListItemButton>
+                  <TextField  label="Resume" type={"file"} inputProps={{accept:"application/pdf"}}/>
+                </ListItem>
+              </List>
 
 
             </Box>
