@@ -1,4 +1,4 @@
-import { Box, Button, TextField, FormControl, Radio, RadioGroup, FormControlLabel, FormLabel } from "@mui/material";
+import { Box, Button, TextField, FormControl, Divider, Radio, RadioGroup, FormControlLabel, FormLabel } from "@mui/material";
 import { Formik } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -7,6 +7,15 @@ import React, { useContext, useState } from 'react'
 import { NavLink, useHistory } from 'react-router-dom'
 import { adddata } from '../../components/context/ContextProvider';
 import Stack from "@mui/material/Stack";
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 const CandidateForm = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
@@ -101,7 +110,7 @@ const CandidateForm = () => {
 
   return (
     <Box m="20px">
-      <Header title="CREATE USER" subtitle="Create a New User Profile" />
+      <Header title="Create Candidate" subtitle="Create a New candidate Profile" />
 
       <Formik
         onSubmit={handleFormSubmit}
@@ -125,11 +134,20 @@ const CandidateForm = () => {
                 "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
               }}
             >
+              <List>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="Personal Information" />
+                  </ListItemButton>
+                </ListItem>
+              </List>
+              <divider/>
+              <divider/>
               <TextField
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Candidate Name"
+                label="Full Name"
                 onBlur={handleBlur}
                 value={inpval.candidatename}
                 onChange={setdata}
@@ -138,28 +156,25 @@ const CandidateForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-              <FormControl>
-                <FormLabel id="demo-row-radio-buttons-group-label">Gender</FormLabel>
-                <RadioGroup
-                  row
-                  aria-labelledby="demo-row-radio-buttons-group-label"
-                  label="Gender"
-                  onBlur={handleBlur}
-                  value={inpval.gender}
-                  onChange={setdata}
-                  name="gender"
+              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">Gender</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  onChange={handleChange}
                 >
-                  <FormControlLabel value="female" control={<Radio />} label="Female" />
-                  <FormControlLabel value="male" control={<Radio />} label="Male" />
-                  <FormControlLabel value="other" control={<Radio />} label="Other" />
-
-                </RadioGroup>
+                  
+                  <MenuItem value={10}>Male</MenuItem>
+                  <MenuItem value={20}>Female</MenuItem>
+                  <MenuItem value={30}>Other</MenuItem>
+                </Select>
               </FormControl>
-              <TextField
+
+              {/* <TextField
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Current Organisation"
+                label="Gender"
                 onBlur={handleBlur}
                 value={inpval.currentorganisation}
                 onChange={setdata}
@@ -167,12 +182,12 @@ const CandidateForm = () => {
                 error={!!touched.firstName && !!errors.firstName}
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
-              />
+              /> */}
               <TextField
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Current Designation"
+                label="Contact No"
                 onBlur={handleBlur}
                 value={inpval.currentdesignation}
                 onChange={setdata}
@@ -185,7 +200,7 @@ const CandidateForm = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Overall Exp"
+                label="Alternate No"
                 onBlur={handleBlur}
                 value={inpval.overallexp}
                 onChange={setdata}
@@ -198,7 +213,7 @@ const CandidateForm = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Relevant Exp"
+                label="Mail ID"
                 onBlur={handleBlur}
                 value={inpval.relevantexp}
                 onChange={setdata}
@@ -211,7 +226,7 @@ const CandidateForm = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Qualification"
+                label="Address"
                 onBlur={handleBlur}
                 value={inpval.qualification}
                 onChange={setdata}
@@ -220,24 +235,25 @@ const CandidateForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
+              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">Nationality</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  onChange={handleChange}
+                >
+                  
+                  <MenuItem value={10}>Indian</MenuItem>
+                  <MenuItem value={20}>American</MenuItem>
+                  <MenuItem value={30}>British</MenuItem>
+                </Select>
+              </FormControl>
+             
               <TextField
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Perferred Location"
-                onBlur={handleBlur}
-                value={inpval.perferredlocation}
-                onChange={setdata}
-                name="perferredlocation"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Current Salary"
+                label="Date Of Birth"
                 onBlur={handleBlur}
                 value={inpval.currentsalary}
                 onChange={setdata}
@@ -246,15 +262,42 @@ const CandidateForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
+              
+               <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">Maritial Status</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  onChange={handleChange}
+                >
+                  
+                  <MenuItem value={10}>Single</MenuItem>
+                  <MenuItem value={20}>Married</MenuItem>
+                  <MenuItem value={30}>Other</MenuItem>
+                </Select>
+              </FormControl>
+              <divider/>
+              <divider/>
+
+              <List>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="Education Info" />
+                  </ListItemButton>
+                </ListItem>
+              </List>
+              <divider/>
+              <divider/>
+
               <TextField
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Expected Salary"
+                label="Under Graduate"
                 onBlur={handleBlur}
-                value={inpval.expectedsalary}
+                value={inpval.ug}
                 onChange={setdata}
-                name="expectedsalary"
+                name="ug"
                 error={!!touched.firstName && !!errors.firstName}
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
@@ -263,11 +306,11 @@ const CandidateForm = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Variable"
+                label="Institue"
                 onBlur={handleBlur}
-                value={inpval.variable}
+                value={inpval.institute}
                 onChange={setdata}
-                name="variable"
+                name="institute"
                 error={!!touched.firstName && !!errors.firstName}
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
@@ -276,11 +319,11 @@ const CandidateForm = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Fixed"
+                label="Courses"
                 onBlur={handleBlur}
-                value={inpval.fixed}
+                value={inpval.course}
                 onChange={setdata}
-                name="fixed"
+                name="courses"
                 error={!!touched.firstName && !!errors.firstName}
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
@@ -289,7 +332,169 @@ const CandidateForm = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Other"
+                label="Education Type"
+                onBlur={handleBlur}
+                value={inpval.edutype}
+                onChange={setdata}
+                name="edutype"
+                error={!!touched.firstName && !!errors.firstName}
+                helperText={touched.firstName && errors.firstName}
+                sx={{ gridColumn: "span 2" }}
+              />
+              <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Year of Degree"
+                onBlur={handleBlur}
+                value={inpval.yod}
+                onChange={setdata}
+                name="yod"
+                error={!!touched.firstName && !!errors.firstName}
+                helperText={touched.firstName && errors.firstName}
+                sx={{ gridColumn: "span 2" }}
+              />
+              <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Other Certificate & Courses"
+                onBlur={handleBlur}
+                value={inpval.occ}
+                onChange={setdata}
+                name="occ"
+                error={!!touched.firstName && !!errors.firstName}
+                helperText={touched.firstName && errors.firstName}
+                sx={{ gridColumn: "span 2" }}
+              />
+              <TextField
+                id="outlined-multiline-static"
+                label="Skills"
+                multiline
+                rows={4}
+                defaultValue="Default Value"
+                fullWidth
+                variant="filled"
+                type="text"
+                onBlur={handleBlur}
+                value={inpval.perferredlocation}
+                onChange={setdata}
+                maxRows={4}
+                name="perferredlocation"
+                error={!!touched.firstName && !!errors.firstName}
+                helperText={touched.firstName && errors.firstName}
+                sx={{ gridColumn: "span 2" }}
+              />
+              <divider/>
+              <divider/>
+
+              <List>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="Employee Details" />
+                  </ListItemButton>
+                </ListItem>
+              </List>
+              <divider/>
+              <divider/>
+
+              <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Designation"
+                onBlur={handleBlur}
+                value={inpval.designation}
+                onChange={setdata}
+                name="designation"
+                error={!!touched.firstName && !!errors.firstName}
+                helperText={touched.firstName && errors.firstName}
+                sx={{ gridColumn: "span 2" }}
+              />
+              <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Department"
+                onBlur={handleBlur}
+                value={inpval.Department}
+                onChange={setdata}
+                name="Department"
+                error={!!touched.firstName && !!errors.firstName}
+                helperText={touched.firstName && errors.firstName}
+                sx={{ gridColumn: "span 2" }}
+              />
+              <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Company Name"
+                onBlur={handleBlur}
+                value={inpval.CompanyName}
+                onChange={setdata}
+                name="CompanyName"
+                error={!!touched.firstName && !!errors.firstName}
+                helperText={touched.firstName && errors.firstName}
+                sx={{ gridColumn: "span 2" }}
+              />
+              <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Industry"
+                onBlur={handleBlur}
+                value={inpval.Industry}
+                onChange={setdata}
+                name="Industry"
+                error={!!touched.firstName && !!errors.firstName}
+                helperText={touched.firstName && errors.firstName}
+                sx={{ gridColumn: "span 2" }}
+              />
+              <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Exclude Industry"
+                onBlur={handleBlur}
+                value={inpval.ExcludeIndustry}
+                onChange={setdata}
+                name="ExcludeIndustry"
+                error={!!touched.firstName && !!errors.firstName}
+                helperText={touched.firstName && errors.firstName}
+                sx={{ gridColumn: "span 2" }}
+              />
+              <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Durations"
+                onBlur={handleBlur}
+                value={inpval.Durations}
+                onChange={setdata}
+                name="Durations"
+                error={!!touched.firstName && !!errors.firstName}
+                helperText={touched.firstName && errors.firstName}
+                sx={{ gridColumn: "span 2" }}
+              />
+              
+
+              <List>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="Salary" />
+                  </ListItemButton>
+                </ListItem>
+              </List>
+              <divider/>
+              <divider/>
+
+
+              
+              <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Current CTC"
                 onBlur={handleBlur}
                 value={inpval.other}
                 onChange={setdata}
@@ -302,7 +507,7 @@ const CandidateForm = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Age"
+                label="Expected CTC"
                 onBlur={handleBlur}
                 value={inpval.age}
                 onChange={setdata}
@@ -328,7 +533,7 @@ const CandidateForm = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Nationality"
+                label="Prefer Location"
                 onBlur={handleBlur}
                 value={inpval.nationality}
                 onChange={setdata}
@@ -337,182 +542,42 @@ const CandidateForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Visa Type"
-                onBlur={handleBlur}
-                value={inpval.visatype}
-                onChange={setdata}
-                name="visatype"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Remarks"
-                onBlur={handleBlur}
-                value={inpval.remarks}
-                onChange={setdata}
-                name="remarks"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Pan Number"
-                onBlur={handleBlur}
-                value={inpval.pannumber}
-                onChange={setdata}
-                name="pannumber"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Linkedin Url"
-                onBlur={handleBlur}
-                value={inpval.linkedinurl}
-                onChange={setdata}
-                name="linkedinurl"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Functional Area"
-                onBlur={handleBlur}
-                value={inpval.functionalarea}
-                onChange={setdata}
-                name="functionalarea"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
-              <TextField
-                fullWidth
-                label="Date of Birth"
-                type="date"
-                name="dob"
-                defaultValue="2017-05-24"
-                variant="filled"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                onBlur={handleBlur}
-                value={inpval.dob}
-                onChange={setdata}
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
-
-              {/* <TextField
-                fullWidth
-                variant="filled"
-                type="date"
-                label="Date of Birth"
-                onBlur={handleBlur}
-                value={inpval.dob}
-                onChange={setdata}
-                name="dob"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              /> */}
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Joining Location"
-                onBlur={handleBlur}
-                value={inpval.joininglocation}
-                onChange={setdata}
-                name="joininglocation"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Reporting Location"
-                onBlur={handleBlur}
-                value={inpval.reportinglocation}
-                onChange={setdata}
-                name="reportinglocation"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Source"
-                onBlur={handleBlur}
-                value={inpval.source}
-                onChange={setdata}
-                name="source"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Marital Status"
-                onBlur={handleBlur}
-                value={inpval.maritalstatus}
-                onChange={setdata}
-                name="maritalstatus"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Resume"
-                onBlur={handleBlur}
-                value={inpval.maritalstatus}
-                onChange={setdata}
-                name="maritalstatus"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
+             
+              
               {/* <Stack direction="row" alignItems="center" spacing={2}>
                 <Button variant="contained" component="label">
                   Resume Upload
                   <input hidden accept="image/*" multiple type="file" />
                 </Button>
               </Stack> */}
-              
-              
-
+             
+              <List>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="Resume" />
+                  </ListItemButton>
+                  <TextField  label="Resume" type={"file"} inputProps={{accept:"application/pdf"}}/>
+                </ListItem>
+              </List>
+              <divider/>
+               
+               <divider/>
+               <divider/>
+               
+              <List>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="Addhar" />
+                  </ListItemButton>
+                  <TextField  label="Resume" type={"file"} inputProps={{accept:"application/pdf"}}/>
+                </ListItem>
+              </List>
 
 
             </Box>
             <Box display="flex" justifyContent="center" mt="20px">
               <Button type="submit" onClick={addinpdata} color="secondary" variant="contained">
-                Create New User
+                Create New client
               </Button>
             </Box>
           </form>
