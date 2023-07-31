@@ -236,6 +236,34 @@ const CandidateForm = () => {
                 sx={{ gridColumn: "span 2" }}
               />
               <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">City</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  onChange={handleChange}
+                >
+                  
+                  <MenuItem value={10}>Nagpur</MenuItem>
+                  <MenuItem value={20}>Mumbai</MenuItem>
+                  <MenuItem value={30}>Hyderabad</MenuItem>
+                  <MenuItem value={20}>Delhi</MenuItem>
+                  <MenuItem value={30}>Bangalore</MenuItem>
+                </Select>
+              </FormControl>
+              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">State</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  onChange={handleChange}
+                >
+                  
+                  <MenuItem value={10}>Maharastra</MenuItem>
+                  <MenuItem value={20}>Karnataka</MenuItem>
+                  <MenuItem value={30}>Telangana</MenuItem>
+                </Select>
+              </FormControl>
+              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
                 <InputLabel id="demo-simple-select-filled-label">Nationality</InputLabel>
                 <Select
                   labelId="demo-simple-select-filled-label"
@@ -248,21 +276,33 @@ const CandidateForm = () => {
                   <MenuItem value={30}>British</MenuItem>
                 </Select>
               </FormControl>
-             
+            
               <TextField
                 fullWidth
                 variant="filled"
                 type="text"
                 label="Date Of Birth"
                 onBlur={handleBlur}
-                value={inpval.currentsalary}
+                value={inpval.dob}
                 onChange={setdata}
-                name="currentsalary"
+                name="dob"
                 error={!!touched.firstName && !!errors.firstName}
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-              
+               <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Age"
+                onBlur={handleBlur}
+                value={inpval.age}
+                onChange={setdata}
+                name="age"
+                error={!!touched.firstName && !!errors.firstName}
+                helperText={touched.firstName && errors.firstName}
+                sx={{ gridColumn: "span 2" }}
+              />
                <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
                 <InputLabel id="demo-simple-select-filled-label">Maritial Status</InputLabel>
                 <Select
@@ -276,8 +316,8 @@ const CandidateForm = () => {
                   <MenuItem value={30}>Other</MenuItem>
                 </Select>
               </FormControl>
-              <divider/>
-              <divider/>
+              
+             
 
               <List>
                 <ListItem disablePadding>
@@ -289,19 +329,19 @@ const CandidateForm = () => {
               <divider/>
               <divider/>
 
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Under Graduate"
-                onBlur={handleBlur}
-                value={inpval.ug}
-                onChange={setdata}
-                name="ug"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
+               <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">Education</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={1}>High School</MenuItem>
+                  <MenuItem value={2}>Under Graduate</MenuItem>
+                  <MenuItem value={3}>Post Graduate</MenuItem>
+                  <MenuItem value={4}>Phd</MenuItem>
+                </Select>
+              </FormControl>
               <TextField
                 fullWidth
                 variant="filled"
@@ -328,32 +368,33 @@ const CandidateForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Education Type"
-                onBlur={handleBlur}
-                value={inpval.edutype}
-                onChange={setdata}
-                name="edutype"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Year of Degree"
-                onBlur={handleBlur}
-                value={inpval.yod}
-                onChange={setdata}
-                name="yod"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
+               <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">Education type</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={30}>Correspondence</MenuItem>
+                  <MenuItem value={10}>Part Time</MenuItem>
+                  <MenuItem value={20}>Full Time</MenuItem>
+                </Select>
+              </FormControl>
+               <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">Year of Degree</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={30}>2 yr</MenuItem>
+                  <MenuItem value={10}>3 yr</MenuItem>
+                  <MenuItem value={20}>4 yr</MenuItem>
+                  <MenuItem value={30}>5 yr</MenuItem>
+                  <MenuItem value={30}>6 yr</MenuItem>
+                  <MenuItem value={30}>7 yr</MenuItem>
+                </Select>
+              </FormControl>
               <TextField
                 fullWidth
                 variant="filled"
@@ -509,9 +550,9 @@ const CandidateForm = () => {
                 type="text"
                 label="Expected CTC"
                 onBlur={handleBlur}
-                value={inpval.age}
+                value={inpval.ectc}
                 onChange={setdata}
-                name="age"
+                name="ectc"
                 error={!!touched.firstName && !!errors.firstName}
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
