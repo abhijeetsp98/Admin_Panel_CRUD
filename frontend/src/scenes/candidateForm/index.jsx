@@ -280,7 +280,7 @@ const CandidateForm = () => {
               <TextField
                 fullWidth
                 variant="filled"
-                type="text"
+                type="date"
                 label="Date Of Birth"
                 onBlur={handleBlur}
                 value={inpval.dob}
