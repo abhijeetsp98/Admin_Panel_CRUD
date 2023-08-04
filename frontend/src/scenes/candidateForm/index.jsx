@@ -530,33 +530,35 @@ const CandidateForm = () => {
               <divider/>
 
 
+              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">Current CTC</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={1}>0 - 3 Lakh</MenuItem>
+                  <MenuItem value={2}>3 - 7 Lakh</MenuItem>
+                  <MenuItem value={3}>7 - 12 Lakh</MenuItem>
+                  <MenuItem value={4}>12 -18 Lakh</MenuItem>
+                  <MenuItem value={4}>18 - Above</MenuItem>
+                </Select>
+              </FormControl>
               
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Current CTC"
-                onBlur={handleBlur}
-                value={inpval.other}
-                onChange={setdata}
-                name="other"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Expected CTC"
-                onBlur={handleBlur}
-                value={inpval.ectc}
-                onChange={setdata}
-                name="ectc"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
+              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">Expected CTC</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={1}>0 - 3 Lakh</MenuItem>
+                  <MenuItem value={2}>3 - 7 Lakh</MenuItem>
+                  <MenuItem value={3}>7 - 12 Lakh</MenuItem>
+                  <MenuItem value={4}>12 -18 Lakh</MenuItem>
+                  <MenuItem value={4}>18 - Above</MenuItem>
+                </Select>
+              </FormControl>
               <TextField
                 fullWidth
                 variant="filled"
@@ -609,6 +611,17 @@ const CandidateForm = () => {
                 <ListItem disablePadding>
                   <ListItemButton>
                     <ListItemText primary="Addhar" />
+                  </ListItemButton>
+                  <TextField  label="Resume" type={"file"} inputProps={{accept:"application/pdf"}}/>
+                </ListItem>
+              </List>
+              <divider/>
+              <divider/>
+               <divider/>
+              <List>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="Document" />
                   </ListItemButton>
                   <TextField  label="Resume" type={"file"} inputProps={{accept:"application/pdf"}}/>
                 </ListItem>
