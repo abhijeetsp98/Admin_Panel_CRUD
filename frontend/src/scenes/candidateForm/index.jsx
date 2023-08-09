@@ -58,6 +58,13 @@ const CandidateForm = () => {
     resume: "",
   })
 
+  const fun2 = (val)=>{
+    var today = new Date()
+    var year = val[0]+val[1]+val[2]+val[3]
+    year = parseInt(year)
+    return today.getFullYear() - year
+  };
+
   const setdata = (e) => {
     console.log(e.target.value);
     const { name, value } = e.target;
@@ -296,7 +303,7 @@ const CandidateForm = () => {
                 type="text"
                 label="Age"
                 onBlur={handleBlur}
-                value={inpval.age}
+                value={fun2(inpval.dob)}
                 onChange={setdata}
                 name="age"
                 error={!!touched.firstName && !!errors.firstName}
