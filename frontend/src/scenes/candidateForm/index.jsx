@@ -12,6 +12,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import { Country, State, City }  from 'country-state-city';
 
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -25,6 +26,16 @@ const CandidateForm = () => {
   };
 
   const { udata, setUdata } = useContext(adddata);
+  const tempCities = City.getCitiesOfState('IN','MH')
+  var cities = []
+  tempCities.forEach((val)=>{
+      cities.push(val.name)
+  })
+  const tempStates = State.getStatesOfCountry('IN')
+  var states = []
+  tempStates.forEach((val)=>{
+      states.push(val.name)
+  })
 
   // const history = useHistory();
 
@@ -58,12 +69,17 @@ const CandidateForm = () => {
     resume: "",
   })
 
-  const fun2 = (val)=>{
-    var today = new Date()
-    var year = val[0]+val[1]+val[2]+val[3]
-    year = parseInt(year)
-    return today.getFullYear() - year
+  const getAge = (val)=>{
+    if(val){
+      var today = new Date()
+      var year = val[0]+val[1]+val[2]+val[3]
+      year = parseInt(year)
+      return today.getFullYear() - year
+    }else{
+      return 0
+    }
   };
+  
 
   const setdata = (e) => {
     console.log(e.target.value);
@@ -247,27 +263,36 @@ const CandidateForm = () => {
                 <Select
                   labelId="demo-simple-select-filled-label"
                   id="demo-simple-select-filled"
-                  onChange={handleChange}
+                  size=""
+                  onChange={handleChange} // we want to work in controlled mode
+                  onBlur={handleBlur}
                 >
-                  
-                  <MenuItem value={10}>Nagpur</MenuItem>
-                  <MenuItem value={20}>Mumbai</MenuItem>
-                  <MenuItem value={30}>Hyderabad</MenuItem>
-                  <MenuItem value={20}>Delhi</MenuItem>
-                  <MenuItem value={30}>Bangalore</MenuItem>
+                  {cities?.map(option => {
+                      return (
+                        <MenuItem key={option} value={option}>
+                          {option ?? option}
+                        </MenuItem>
+                      );
+                  })}
                 </Select>
               </FormControl>
               <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
                 <InputLabel id="demo-simple-select-filled-label">State</InputLabel>
                 <Select
+                  size="10"
                   labelId="demo-simple-select-filled-label"
                   id="demo-simple-select-filled"
-                  onChange={handleChange}
-                >
                   
-                  <MenuItem value={10}>Maharastra</MenuItem>
-                  <MenuItem value={20}>Karnataka</MenuItem>
-                  <MenuItem value={30}>Telangana</MenuItem>
+                  onChange={handleChange} // we want to work in controlled mode
+                  onBlur={handleBlur}
+                >
+                  {states?.map(option => {
+                      return (
+                        <MenuItem key={option} value={option}>
+                          {option ?? option}
+                        </MenuItem>
+                      );
+                  })}
                 </Select>
               </FormControl>
               <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
@@ -303,7 +328,7 @@ const CandidateForm = () => {
                 type="text"
                 label="Age"
                 onBlur={handleBlur}
-                value={fun2(inpval.dob)}
+                value={getAge(inpval.dob)}
                 onChange={setdata}
                 name="age"
                 error={!!touched.firstName && !!errors.firstName}

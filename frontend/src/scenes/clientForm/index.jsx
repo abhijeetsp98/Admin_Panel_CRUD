@@ -12,6 +12,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import { Country, State, City }  from 'country-state-city';
 
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -26,7 +27,11 @@ const ClientForm = () => {
   };
 
   const { udata, setUdata } = useContext(adddata);
-
+  const tempStates = State.getStatesOfCountry('IN')
+  var states = []
+  tempStates.forEach((val)=>{
+      states.push(val.name)
+  })
   // const history = useHistory();
 
   const [inpval, setINP] = useState({
@@ -142,8 +147,8 @@ const ClientForm = () => {
                   </ListItemButton>
                 </ListItem>
               </List>
-              <divider/>
-              <divider/>
+              <divider />
+              <divider />
               <TextField
                 fullWidth
                 variant="filled"
@@ -186,7 +191,7 @@ const ClientForm = () => {
               <TextField
                 fullWidth
                 variant="filled"
-                type="text"
+                type="date"
                 label="Est Date"
                 onBlur={handleBlur}
                 value={inpval.relevantexp}
@@ -222,7 +227,7 @@ const ClientForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-             
+
               <TextField
                 fullWidth
                 variant="filled"
@@ -249,7 +254,7 @@ const ClientForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-              
+
 
               <List>
                 <ListItem disablePadding>
@@ -258,18 +263,30 @@ const ClientForm = () => {
                   </ListItemButton>
                 </ListItem>
               </List>
-              <divider/>
-              <divider/>
+              <divider />
+              <divider />
 
+              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">Job Type</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={1}>Intern</MenuItem>
+                  <MenuItem value={2}>Part Time</MenuItem>
+                  <MenuItem value={3}>Full Time</MenuItem>
+                </Select>
+              </FormControl>
               <TextField
                 fullWidth
                 variant="filled"
                 type="text"
                 label="Job Title"
                 onBlur={handleBlur}
-                value={inpval.candidatename}
+                value={inpval.jobtitle}
                 onChange={setdata}
-                name="candidatename"
+                name="jobtitle"
                 error={!!touched.firstName && !!errors.firstName}
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
@@ -287,39 +304,44 @@ const ClientForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Gender"
-                onBlur={handleBlur}
-                value={inpval.currentdesignation}
-                onChange={setdata}
-                name="currentdesignation"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Job Location"
-                onBlur={handleBlur}
-                value={inpval.overallexp}
-                onChange={setdata}
-                name="overallexp"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
+              <FormControl>
+                <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
+                <RadioGroup
+                  aria-labelledby="demo-radio-buttons-group-label"
+                  defaultValue="female"
+                  name="radio-buttons-group"
+                >
+                  <FormControlLabel value="female" control={<Radio />} label="Female" />
+                  <FormControlLabel value="male" control={<Radio />} label="Male" />
+                  <FormControlLabel value="other" control={<Radio />} label="Other" />
+                </RadioGroup>
+              </FormControl>
+              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">Job Location</InputLabel>
+                <Select
+                  size="10"
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  
+                  onChange={handleChange} // we want to work in controlled mode
+                  onBlur={handleBlur}
+                >
+                  {states?.map(option => {
+                      return (
+                        <MenuItem key={option} value={option}>
+                          {option ?? option}
+                        </MenuItem>
+                      );
+                  })}
+                </Select>
+              </FormControl>
               <TextField
                 fullWidth
                 variant="filled"
                 type="text"
                 label="Full Address"
                 onBlur={handleBlur}
-                value={inpval.relevantexp}
+                value={inpval.fulladdress}
                 onChange={setdata}
                 name="relevantexp"
                 error={!!touched.firstName && !!errors.firstName}
@@ -332,7 +354,7 @@ const ClientForm = () => {
                 type="text"
                 label="Qualification"
                 onBlur={handleBlur}
-                value={inpval.qualification}
+                value={inpval.Qualification}
                 onChange={setdata}
                 name="qualification"
                 error={!!touched.firstName && !!errors.firstName}
@@ -345,46 +367,46 @@ const ClientForm = () => {
                 type="text"
                 label="Min Experience"
                 onBlur={handleBlur}
-                value={inpval.perferredlocation}
+                value={inpval.minExp}
                 onChange={setdata}
                 name="perferredlocation"
                 error={!!touched.firstName && !!errors.firstName}
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-               <TextField
+              <TextField
                 fullWidth
                 variant="filled"
                 type="text"
                 label="Max Experience"
                 onBlur={handleBlur}
-                value={inpval.perferredlocation}
+                value={inpval.maxExp}
                 onChange={setdata}
                 name="perferredlocation"
                 error={!!touched.firstName && !!errors.firstName}
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-               <TextField
+              <TextField
                 fullWidth
                 variant="filled"
                 type="text"
                 label="Age"
                 onBlur={handleBlur}
-                value={inpval.perferredlocation}
+                value={inpval.age}
                 onChange={setdata}
                 name="perferredlocation"
                 error={!!touched.firstName && !!errors.firstName}
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-               <TextField
+              <TextField
                 fullWidth
                 variant="filled"
                 type="text"
                 label="Language"
                 onBlur={handleBlur}
-                value={inpval.perferredlocation}
+                value={inpval.language}
                 onChange={setdata}
                 name="perferredlocation"
                 error={!!touched.firstName && !!errors.firstName}
@@ -392,39 +414,39 @@ const ClientForm = () => {
                 sx={{ gridColumn: "span 2" }}
               />
 
-               <TextField
+              <TextField
                 fullWidth
                 variant="filled"
                 type="text"
                 label="Montly Inhand Salary"
                 onBlur={handleBlur}
-                value={inpval.qualification}
+                value={inpval.montlyInhand}
                 onChange={setdata}
                 name="qualification"
                 error={!!touched.firstName && !!errors.firstName}
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
+              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">Shift</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={1}>Day </MenuItem>
+                  <MenuItem value={2}>Night</MenuItem>
+                  <MenuItem value={3}>Rotational</MenuItem>
+                  <MenuItem value={4}>Any</MenuItem>
+                </Select>
+              </FormControl>
               <TextField
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Shift"
+                label="Job Timing "
                 onBlur={handleBlur}
-                value={inpval.qualification}
-                onChange={setdata}
-                name="qualification"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Job Training"
-                onBlur={handleBlur}
-                value={inpval.qualification}
+                value={inpval.jobTiming}
                 onChange={setdata}
                 name="qualification"
                 error={!!touched.firstName && !!errors.firstName}
@@ -437,41 +459,58 @@ const ClientForm = () => {
                 type="text"
                 label="Week Off"
                 onBlur={handleBlur}
-                value={inpval.qualification}
+                value={inpval.weekOff}
                 onChange={setdata}
                 name="qualification"
                 error={!!touched.firstName && !!errors.firstName}
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Skills"
-                onBlur={handleBlur}
-                value={inpval.qualification}
-                onChange={setdata}
-                name="qualification"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
-              <TextField
+               <TextField
                 fullWidth
                 variant="filled"
                 type="text"
                 label="Roles and Responsibilities"
                 onBlur={handleBlur}
-                value={inpval.qualification}
+                value={inpval.rolesandres}
                 onChange={setdata}
                 name="qualification"
                 error={!!touched.firstName && !!errors.firstName}
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-              
+              <TextField
+                id="outlined-multiline-static"
+                label="Skills"
+                multiline
+                rows={4}
+                defaultValue="Default Value"
+                fullWidth
+                variant="filled"
+                type="text"
+                onBlur={handleBlur}
+                value={inpval.skill}
+                onChange={setdata}
+                maxRows={4}
+                name="perferredlocation"
+                error={!!touched.firstName && !!errors.firstName}
+                helperText={touched.firstName && errors.firstName}
+                sx={{ gridColumn: "span 2" }}
+              />
+              <divider />
+              <divider />
              
+              <List>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="Document" />
+                  </ListItemButton>
+                  <TextField  label="Resume" type={"file"} inputProps={{accept:"application/pdf"}}/>
+                </ListItem>
+              </List>
+              <divider />
+              <divider />
+              <divider />
               <List>
                 <ListItem disablePadding>
                   <ListItemButton>
@@ -479,8 +518,8 @@ const ClientForm = () => {
                   </ListItemButton>
                 </ListItem>
               </List>
-              <divider/>
-              <divider/>
+              <divider />
+              <divider />
 
               <TextField
                 fullWidth
@@ -488,32 +527,46 @@ const ClientForm = () => {
                 type="text"
                 label="Paid "
                 onBlur={handleBlur}
-                value={inpval.candidatename}
+                value={inpval.paid}
                 onChange={setdata}
                 name="candidatename"
                 error={!!touched.firstName && !!errors.firstName}
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-              
-              
+
+              <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Deduction "
+                onBlur={handleBlur}
+                value={inpval.deduction}
+                onChange={setdata}
+                name="candidatename"
+                error={!!touched.firstName && !!errors.firstName}
+                helperText={touched.firstName && errors.firstName}
+                sx={{ gridColumn: "span 2" }}
+              />
+
+
               {/* <Stack direction="row" alignItems="center" spacing={2}>
                 <Button variant="contained" component="label">
                   Resume Upload
                   <input hidden accept="image/*" multiple type="file" />
                 </Button>
               </Stack> */}
-               <divider/>
-                  
+              <divider />
 
-              <divider/>
-              
+
+              <divider />
+
 
 
             </Box>
             <Box display="flex" justifyContent="center" mt="20px">
               <Button type="submit" onClick={addinpdata} color="secondary" variant="contained">
-                Create New client
+                Agree and Submit
               </Button>
             </Box>
           </form>
