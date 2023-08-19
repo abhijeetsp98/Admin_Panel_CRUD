@@ -129,7 +129,7 @@ const Sidebar = () => {
             />
             <Item
               title="Lead"
-              to="/"
+              to="/lead"
               icon={<AssistantPhoto />}
               selected={selected}
               setSelected={setSelected}

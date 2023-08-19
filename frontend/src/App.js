@@ -19,6 +19,7 @@ import Client from "./scenes/client";
 import ClientForm from "./scenes/clientForm";
 import Requirement from "./scenes/requirement"
 import RequirementForm from "./scenes/requirementForm";
+import Lead from "./scenes/lead";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -35,6 +36,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/client" element={<Client />} />
+              <Route path="/lead" element={<Lead />} />
               <Route path="/clientForm" element={<ClientForm />} />
               <Route path="/candidate" element={<Candidate />} />
               <Route path="/candidateForm" element={<CandidateForm />} />
