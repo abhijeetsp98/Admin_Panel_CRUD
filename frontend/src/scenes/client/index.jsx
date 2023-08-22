@@ -12,30 +12,21 @@ const Client = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const columns = [
-    { field: "id", headerName: "ID" },
+    { field: "id", headerName: "Name" },
     {
       field: "candidatename",
-      headerName: "Candidate Name",
+      headerName: "Industry",
       flex: 1,
       cellClassName: "name-column--cell",
     },
     {
       field: "gender",
-      headerName: "Gender",
+      headerName: "Created By",
       type: "number",
       headerAlign: "left",
       align: "left",
     },
-    {
-      field: "dob",
-      headerName: "Current Organisation",
-      flex: 1,
-    },
-    {
-      field: "remarks",
-      headerName: "Current Designation",
-      flex: 1,
-    },
+  
    
   ];
 

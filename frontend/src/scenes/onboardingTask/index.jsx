@@ -7,46 +7,36 @@ import Header from "../../components/Header";
 import React, { useState, useEffect, useContext } from 'react'
 
 
-const Requirement = () => {
+const OnboardingTask = () => {
   
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const columns = [
-    { field: "id", headerName: "Priority" },
+    { field: "id", headerName: "All Task" },
     {
       field: "candidatename",
-      headerName: "Job Details & ID",
+      headerName: "Pending",
       flex: 1,
       cellClassName: "name-column--cell",
     },
     {
       field: "gender",
-      headerName: "Client & HR Manager",
+      headerName: "Upcoming",
       type: "number",
       headerAlign: "left",
       align: "left",
     },
     {
-      field: "gender2",
-      headerName: "Erika",
-      type: "number",
-      headerAlign: "left",
-      align: "left",
+      field: "dob",
+      headerName: "In Progress",
+      flex: 1,
     },
     {
-      field: "gender3",
-      headerName: "Candidate Statistics",
-      type: "number",
-      headerAlign: "left",
-      align: "left",
+      field: "remarks",
+      headerName: "Completed",
+      flex: 1,
     },
-    {
-      field: "gender4",
-      headerName: "View All",
-      type: "number",
-      headerAlign: "left",
-      align: "left",
-    },
+    
    
   ];
 
@@ -83,10 +73,8 @@ const Requirement = () => {
 
   return (
     <Box m="20px">
-      <Button variant="contained" href="/requirementForm" color="success"  startIcon={<LibraryAddIcon />}>
-        Add Requirement
-      </Button>
-      <Header title="Requirement" subtitle="Managing the Requirement" />
+      
+      <Header subtitle="ONBOARDING TASK" />
       <Box
         m="40px 0 0 0"
         height="75vh"
@@ -123,4 +111,4 @@ const Requirement = () => {
   );
 };
 
-export default Requirement;
+export default OnboardingTask;

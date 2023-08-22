@@ -5,48 +5,30 @@ import Button from '@mui/material/Button';
 import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
 import Header from "../../components/Header";
 import React, { useState, useEffect, useContext } from 'react'
+import { Source } from "@mui/icons-material";
 
 
-const Requirement = () => {
-  
+const SourcePage = () => {
+ 
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const columns = [
-    { field: "id", headerName: "Priority" },
+    { field: "id", headerName: "Name" },
     {
       field: "candidatename",
-      headerName: "Job Details & ID",
+      headerName: "Contract Status",
       flex: 1,
       cellClassName: "name-column--cell",
     },
     {
       field: "gender",
-      headerName: "Client & HR Manager",
+      headerName: "Contact Person",
       type: "number",
       headerAlign: "left",
       align: "left",
     },
-    {
-      field: "gender2",
-      headerName: "Erika",
-      type: "number",
-      headerAlign: "left",
-      align: "left",
-    },
-    {
-      field: "gender3",
-      headerName: "Candidate Statistics",
-      type: "number",
-      headerAlign: "left",
-      align: "left",
-    },
-    {
-      field: "gender4",
-      headerName: "View All",
-      type: "number",
-      headerAlign: "left",
-      align: "left",
-    },
+    
+    
    
   ];
 
@@ -83,10 +65,10 @@ const Requirement = () => {
 
   return (
     <Box m="20px">
-      <Button variant="contained" href="/requirementForm" color="success"  startIcon={<LibraryAddIcon />}>
-        Add Requirement
+      <Button variant="contained" href="/candidateForm" color="success"  startIcon={<LibraryAddIcon />}>
+        Add Source
       </Button>
-      <Header title="Requirement" subtitle="Managing the Requirement" />
+      <Header title="Source" />
       <Box
         m="40px 0 0 0"
         height="75vh"
@@ -123,4 +105,4 @@ const Requirement = () => {
   );
 };
 
-export default Requirement;
+export default SourcePage;

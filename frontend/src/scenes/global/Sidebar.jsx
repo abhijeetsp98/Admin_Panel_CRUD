@@ -157,28 +157,28 @@ const Sidebar = () => {
             />
             <Item
               title="Onboarding Task"
-              to="/"
+              to="/onboardingTask"
               icon={<FormatListBulleted />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="New Hire Management"
-              to="/"
+              to="/newHireManagement"
               icon={<School />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="Temp Staffing"
-              to="/"
+              to="/tempStaffing"
               icon={<InsertDriveFile />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="Source"
-              to="/"
+              to="/sourcePage"
               icon={<Shortcut />}
               selected={selected}
               setSelected={setSelected}
@@ -192,7 +192,7 @@ const Sidebar = () => {
             />
             <Item
               title="Forum"
-              to="/calendar"
+              to="/forum"
               icon={<Message />}
               selected={selected}
               setSelected={setSelected}

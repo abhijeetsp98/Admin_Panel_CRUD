@@ -8,6 +8,11 @@ import Invoices from "./scenes/invoices";
 import Contacts from "./scenes/contacts";
 import Bar from "./scenes/bar";
 import CandidateForm from "./scenes/candidateForm";
+import OnboardingTask from "./scenes/onboardingTask";
+import NewHireManagement from "./scenes/newHireManagement";
+import TempStaffing from "./scenes/tempStaffing";
+import SourcePage from "./scenes/sourcePage"
+import Forum from "./scenes/forum";
 import Line from "./scenes/line";
 import Pie from "./scenes/pie";
 import FAQ from "./scenes/faq";
@@ -40,6 +45,11 @@ function App() {
               <Route path="/clientForm" element={<ClientForm />} />
               <Route path="/candidate" element={<Candidate />} />
               <Route path="/candidateForm" element={<CandidateForm />} />
+              <Route path="/onboardingTask" element={<OnboardingTask />} />
+              <Route path="/newHireManagement" element={<NewHireManagement />} />
+              <Route path="/tempStaffing" element={<TempStaffing />} />
+              <Route path="/sourcePage" element={<SourcePage />} />
+              <Route path="/forum" element={<Forum />} />
               <Route path="/requirement" element={<Requirement />} />
               <Route path="/requirementForm" element={<RequirementForm />} />
               <Route path="/contacts" element={<Contacts />} />

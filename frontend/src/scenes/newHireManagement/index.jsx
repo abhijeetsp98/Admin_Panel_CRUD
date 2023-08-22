@@ -7,46 +7,13 @@ import Header from "../../components/Header";
 import React, { useState, useEffect, useContext } from 'react'
 
 
-const Requirement = () => {
+const NewHireManagement = () => {
   
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const columns = [
-    { field: "id", headerName: "Priority" },
-    {
-      field: "candidatename",
-      headerName: "Job Details & ID",
-      flex: 1,
-      cellClassName: "name-column--cell",
-    },
-    {
-      field: "gender",
-      headerName: "Client & HR Manager",
-      type: "number",
-      headerAlign: "left",
-      align: "left",
-    },
-    {
-      field: "gender2",
-      headerName: "Erika",
-      type: "number",
-      headerAlign: "left",
-      align: "left",
-    },
-    {
-      field: "gender3",
-      headerName: "Candidate Statistics",
-      type: "number",
-      headerAlign: "left",
-      align: "left",
-    },
-    {
-      field: "gender4",
-      headerName: "View All",
-      type: "number",
-      headerAlign: "left",
-      align: "left",
-    },
+    { field: "id", headerName: "Search New Hire" },
+    
    
   ];
 
@@ -83,10 +50,8 @@ const Requirement = () => {
 
   return (
     <Box m="20px">
-      <Button variant="contained" href="/requirementForm" color="success"  startIcon={<LibraryAddIcon />}>
-        Add Requirement
-      </Button>
-      <Header title="Requirement" subtitle="Managing the Requirement" />
+     
+      <Header subtitle="NEW HIRE MANAGEMENT" />
       <Box
         m="40px 0 0 0"
         height="75vh"
@@ -123,4 +88,4 @@ const Requirement = () => {
   );
 };
 
-export default Requirement;
+export default NewHireManagement;
