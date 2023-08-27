@@ -166,6 +166,15 @@ const CandidateForm = () => {
               </List>
               <divider/>
               <divider/>
+              <divider/>
+              <List>
+                <ListItem disablePadding>
+                  <ListItemButton>
+                    <ListItemText primary="Profile photo" />
+                  </ListItemButton>
+                  <TextField  label="Resume" type={"file"} inputProps={{accept:"application/pdf"}}/>
+                </ListItem>
+              </List>
               <TextField
                 fullWidth
                 variant="filled"
@@ -179,6 +188,19 @@ const CandidateForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
+              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">Maritial Status</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  onChange={handleChange}
+                >
+                  
+                  <MenuItem value={10}>Single</MenuItem>
+                  <MenuItem value={20}>Married</MenuItem>
+                  <MenuItem value={30}>Other</MenuItem>
+                </Select>
+              </FormControl>
               <FormControl>
               <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
               <RadioGroup
@@ -258,22 +280,18 @@ const CandidateForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
+              
               <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
-                <InputLabel id="demo-simple-select-filled-label">City</InputLabel>
+                <InputLabel id="demo-simple-select-filled-label">Nationality</InputLabel>
                 <Select
                   labelId="demo-simple-select-filled-label"
                   id="demo-simple-select-filled"
-                  size=""
-                  onChange={handleChange} // we want to work in controlled mode
-                  onBlur={handleBlur}
+                  onChange={handleChange}
                 >
-                  {cities?.map(option => {
-                      return (
-                        <MenuItem key={option} value={option}>
-                          {option ?? option}
-                        </MenuItem>
-                      );
-                  })}
+                  
+                  <MenuItem value={10}>Indian</MenuItem>
+                  <MenuItem value={20}>American</MenuItem>
+                  <MenuItem value={30}>British</MenuItem>
                 </Select>
               </FormControl>
               <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
@@ -296,18 +314,24 @@ const CandidateForm = () => {
                 </Select>
               </FormControl>
               <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
-                <InputLabel id="demo-simple-select-filled-label">Nationality</InputLabel>
+                <InputLabel id="demo-simple-select-filled-label">City</InputLabel>
                 <Select
                   labelId="demo-simple-select-filled-label"
                   id="demo-simple-select-filled"
-                  onChange={handleChange}
+                  size=""
+                  onChange={handleChange} // we want to work in controlled mode
+                  onBlur={handleBlur}
                 >
-                  
-                  <MenuItem value={10}>Indian</MenuItem>
-                  <MenuItem value={20}>American</MenuItem>
-                  <MenuItem value={30}>British</MenuItem>
+                  {cities?.map(option => {
+                      return (
+                        <MenuItem key={option} value={option}>
+                          {option ?? option}
+                        </MenuItem>
+                      );
+                  })}
                 </Select>
               </FormControl>
+             
             
               <TextField
                 fullWidth
@@ -335,22 +359,11 @@ const CandidateForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-               <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
-                <InputLabel id="demo-simple-select-filled-label">Maritial Status</InputLabel>
-                <Select
-                  labelId="demo-simple-select-filled-label"
-                  id="demo-simple-select-filled"
-                  onChange={handleChange}
-                >
-                  
-                  <MenuItem value={10}>Single</MenuItem>
-                  <MenuItem value={20}>Married</MenuItem>
-                  <MenuItem value={30}>Other</MenuItem>
-                </Select>
-              </FormControl>
+               
               
              
-
+               <divider/>
+               <divider/>
               <List>
                 <ListItem disablePadding>
                   <ListItemButton>
@@ -387,19 +400,30 @@ const CandidateForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Courses"
-                onBlur={handleBlur}
-                value={inpval.course}
-                onChange={setdata}
-                name="courses"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
+              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">Course</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={30}>B Tech</MenuItem>
+                  <MenuItem value={10}>M Tech</MenuItem>
+                  <MenuItem value={20}>Phd</MenuItem>
+                </Select>
+              </FormControl>
+              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">Branch</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={30}>Computer Science</MenuItem>
+                  <MenuItem value={10}>Civil Engineering</MenuItem>
+                  <MenuItem value={20}>Mechanical Engineering</MenuItem>
+                </Select>
+              </FormControl>
                <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
                 <InputLabel id="demo-simple-select-filled-label">Education type</InputLabel>
                 <Select
@@ -460,11 +484,12 @@ const CandidateForm = () => {
               />
               <divider/>
               <divider/>
-
+              <divider/>
+              <divider/>
               <List>
                 <ListItem disablePadding>
                   <ListItemButton>
-                    <ListItemText primary="Employee Details" />
+                    <ListItemText primary="Work Experience" />
                   </ListItemButton>
                 </ListItem>
               </List>
@@ -550,7 +575,15 @@ const CandidateForm = () => {
                 sx={{ gridColumn: "span 2" }}
               />
               
-
+                <Box display="flex" justifyContent="center" mt="20px">
+                <Button type="submit" onClick={addinpdata} color="secondary" variant="contained">
+                  Add More Work Experience
+                </Button>
+              </Box>
+              <divider/>
+              <divider/>
+              <divider/>
+              
               <List>
                 <ListItem disablePadding>
                   <ListItemButton>
@@ -642,7 +675,7 @@ const CandidateForm = () => {
               <List>
                 <ListItem disablePadding>
                   <ListItemButton>
-                    <ListItemText primary="Addhar" />
+                    <ListItemText primary="ID Proof" />
                   </ListItemButton>
                   <TextField  label="Resume" type={"file"} inputProps={{accept:"application/pdf"}}/>
                 </ListItem>
@@ -650,6 +683,19 @@ const CandidateForm = () => {
               <divider/>
               <divider/>
                <divider/>
+               <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Additonal Documents"
+                onBlur={handleBlur}
+                value={inpval.nationality}
+                onChange={setdata}
+                name="nationality"
+                error={!!touched.firstName && !!errors.firstName}
+                helperText={touched.firstName && errors.firstName}
+                sx={{ gridColumn: "span 2" }}
+              />
               <List>
                 <ListItem disablePadding>
                   <ListItemButton>
@@ -658,7 +704,6 @@ const CandidateForm = () => {
                   <TextField  label="Resume" type={"file"} inputProps={{accept:"application/pdf"}}/>
                 </ListItem>
               </List>
-
 
             </Box>
             <Box display="flex" justifyContent="center" mt="20px">

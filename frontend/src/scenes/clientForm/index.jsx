@@ -12,11 +12,11 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { Country, State, City }  from 'country-state-city';
 
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { Country, State, City }  from 'country-state-city';
 
 
 const ClientForm = () => {
@@ -27,6 +27,11 @@ const ClientForm = () => {
   };
 
   const { udata, setUdata } = useContext(adddata);
+  const tempCities = City.getCitiesOfState('IN','MH')
+  var cities = []
+  tempCities.forEach((val)=>{
+      cities.push(val.name)
+  })
   const tempStates = State.getStatesOfCountry('IN')
   var states = []
   tempStates.forEach((val)=>{
@@ -214,47 +219,113 @@ const ClientForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
+              <divider></divider>
+              <divider></divider>
               <TextField
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Contact Person"
+                label="Contact Person 1"
                 onBlur={handleBlur}
-                value={inpval.perferredlocation}
+                value={inpval.contactperson1}
                 onChange={setdata}
                 name="perferredlocation"
                 error={!!touched.firstName && !!errors.firstName}
                 helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: "span 1" }}
               />
-
               <TextField
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Contact No."
+                label="Designation"
                 onBlur={handleBlur}
-                value={inpval.currentsalary}
+                value={inpval.designation}
+                onChange={setdata}
+                name="perferredlocation"
+                error={!!touched.firstName && !!errors.firstName}
+                helperText={touched.firstName && errors.firstName}
+                sx={{ gridColumn: "span 1" }}
+              />
+              <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Contact Number 1"
+                onBlur={handleBlur}
+                value={inpval.contactnumber1}
                 onChange={setdata}
                 name="currentsalary"
                 error={!!touched.firstName && !!errors.firstName}
                 helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
+                sx={{ gridColumn: "span 1" }}
+              />
+               <divider></divider>
+              <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Contact Person 2"
+                onBlur={handleBlur}
+                value={inpval.contactperson2}
+                onChange={setdata}
+                name="perferredlocation"
+                error={!!touched.firstName && !!errors.firstName}
+                helperText={touched.firstName && errors.firstName}
+                sx={{ gridColumn: "span 1" }}
               />
               <TextField
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Email ID"
+                label="Designation"
                 onBlur={handleBlur}
-                value={inpval.expectedsalary}
+                value={inpval.designation2}
+                onChange={setdata}
+                name="perferredlocation"
+                error={!!touched.firstName && !!errors.firstName}
+                helperText={touched.firstName && errors.firstName}
+                sx={{ gridColumn: "span 1" }}
+              />
+              <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Contact No. 2"
+                onBlur={handleBlur}
+                value={inpval.contactperson2}
+                onChange={setdata}
+                name="currentsalary"
+                error={!!touched.firstName && !!errors.firstName}
+                helperText={touched.firstName && errors.firstName}
+                sx={{ gridColumn: "span 1" }}
+              />
+              <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Email ID 1"
+                onBlur={handleBlur}
+                value={inpval.emailid1}
                 onChange={setdata}
                 name="expectedsalary"
                 error={!!touched.firstName && !!errors.firstName}
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-
+               <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Email ID 2"
+                onBlur={handleBlur}
+                value={inpval.emailid2}
+                onChange={setdata}
+                name="expectedsalary"
+                error={!!touched.firstName && !!errors.firstName}
+                helperText={touched.firstName && errors.firstName}
+                sx={{ gridColumn: "span 2" }}
+              /> 
 
               <List>
                 <ListItem disablePadding>
@@ -304,17 +375,53 @@ const ClientForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-              <FormControl>
-                <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
-                <RadioGroup
-                  aria-labelledby="demo-radio-buttons-group-label"
-                  defaultValue="female"
-                  name="radio-buttons-group"
+              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">Marital Status</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  onChange={handleChange}
                 >
-                  <FormControlLabel value="female" control={<Radio />} label="Female" />
-                  <FormControlLabel value="male" control={<Radio />} label="Male" />
-                  <FormControlLabel value="other" control={<Radio />} label="Other" />
-                </RadioGroup>
+                  <MenuItem value={1}>Single </MenuItem>
+                  <MenuItem value={2}>Married</MenuItem>
+                  <MenuItem value={3}>NA</MenuItem>
+                </Select>
+              </FormControl>
+              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">City</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  size=""
+                  onChange={handleChange} // we want to work in controlled mode
+                  onBlur={handleBlur}
+                >
+                  {cities?.map(option => {
+                      return (
+                        <MenuItem key={option} value={option}>
+                          {option ?? option}
+                        </MenuItem>
+                      );
+                  })}
+                </Select>
+              </FormControl>
+              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">State</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  size=""
+                  onChange={handleChange} // we want to work in controlled mode
+                  onBlur={handleBlur}
+                >
+                  {cities?.map(option => {
+                      return (
+                        <MenuItem key={option} value={option}>
+                          {option ?? option}
+                        </MenuItem>
+                      );
+                  })}
+                </Select>
               </FormControl>
               <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
                 <InputLabel id="demo-simple-select-filled-label">Job Location</InputLabel>
@@ -335,6 +442,19 @@ const ClientForm = () => {
                   })}
                 </Select>
               </FormControl>
+              <FormControl>
+                <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
+                <RadioGroup
+                  aria-labelledby="demo-radio-buttons-group-label"
+                  defaultValue="female"
+                  name="radio-buttons-group"
+                >
+                  <FormControlLabel value="female" control={<Radio />} label="Female" />
+                  <FormControlLabel value="male" control={<Radio />} label="Male" />
+                  <FormControlLabel value="other" control={<Radio />} label="Other" />
+                </RadioGroup>
+              </FormControl>
+              
               <TextField
                 fullWidth
                 variant="filled"
@@ -361,32 +481,35 @@ const ClientForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Min Experience"
-                onBlur={handleBlur}
-                value={inpval.minExp}
-                onChange={setdata}
-                name="perferredlocation"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Max Experience"
-                onBlur={handleBlur}
-                value={inpval.maxExp}
-                onChange={setdata}
-                name="perferredlocation"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
+              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">Min Experience</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={1}>0</MenuItem>
+                  <MenuItem value={2}>1</MenuItem>
+                  <MenuItem value={3}>2</MenuItem>
+                  <MenuItem value={4}>3</MenuItem>
+                  <MenuItem value={5}>4</MenuItem>
+                  <MenuItem value={6}>5</MenuItem>
+                </Select>
+              </FormControl>
+              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">Max Experience</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={1}>6</MenuItem>
+                  <MenuItem value={2}>12</MenuItem>
+                  <MenuItem value={3}>18</MenuItem>
+                  <MenuItem value={4}>24</MenuItem>
+                  <MenuItem value={5}>30</MenuItem>
+                </Select>
+              </FormControl>
               <TextField
                 fullWidth
                 variant="filled"
@@ -404,16 +527,41 @@ const ClientForm = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Language"
+                label="Primary Language"
                 onBlur={handleBlur}
-                value={inpval.language}
+                value={inpval.primarylanguage}
                 onChange={setdata}
                 name="perferredlocation"
                 error={!!touched.firstName && !!errors.firstName}
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-
+              <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Secondary Language"
+                onBlur={handleBlur}
+                value={inpval.secondarylanguage}
+                onChange={setdata}
+                name="perferredlocation"
+                error={!!touched.firstName && !!errors.firstName}
+                helperText={touched.firstName && errors.firstName}
+                sx={{ gridColumn: "span 2" }}
+              />
+              <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Regional Language"
+                onBlur={handleBlur}
+                value={inpval.regionallanguage}
+                onChange={setdata}
+                name="perferredlocation"
+                error={!!touched.firstName && !!errors.firstName}
+                helperText={touched.firstName && errors.firstName}
+                sx={{ gridColumn: "span 2" }}
+              />
               <TextField
                 fullWidth
                 variant="filled"
@@ -444,9 +592,9 @@ const ClientForm = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Job Timing "
+                label="Job Timing Start"
                 onBlur={handleBlur}
-                value={inpval.jobTiming}
+                value={inpval.jobTimingStart}
                 onChange={setdata}
                 name="qualification"
                 error={!!touched.firstName && !!errors.firstName}
@@ -457,24 +605,57 @@ const ClientForm = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Week Off"
+                label="Job Timing End"
                 onBlur={handleBlur}
-                value={inpval.weekOff}
+                value={inpval.jobTimingEnd}
                 onChange={setdata}
                 name="qualification"
                 error={!!touched.firstName && !!errors.firstName}
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-               <TextField
+              <TextField
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Roles and Responsibilities"
+                label="Total Hours"
                 onBlur={handleBlur}
-                value={inpval.rolesandres}
+                value={inpval.jobTimingTotalHour}
                 onChange={setdata}
                 name="qualification"
+                error={!!touched.firstName && !!errors.firstName}
+                helperText={touched.firstName && errors.firstName}
+                sx={{ gridColumn: "span 2" }}
+              />
+               <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">Week Off</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={1}>Sunday </MenuItem>
+                  <MenuItem value={2}>Monday</MenuItem>
+                  <MenuItem value={3}>Tuesday</MenuItem>
+                  <MenuItem value={4}>Wednesday</MenuItem>
+                  <MenuItem value={5}>Thrusday</MenuItem>
+                  <MenuItem value={6}>Friday</MenuItem>
+                  <MenuItem value={7}>Saturday</MenuItem>
+                </Select>
+              </FormControl>
+              <TextField
+                id="outlined-multiline-static"
+                label="Roles and Responsiblities"
+                multiline
+                rows={4}
+                fullWidth
+                variant="filled"
+                type="text"
+                onBlur={handleBlur}
+                value={inpval.rolesandresponsiblities}
+                onChange={setdata}
+                maxRows={4}
+                name="perferredlocation"
                 error={!!touched.firstName && !!errors.firstName}
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
@@ -484,7 +665,6 @@ const ClientForm = () => {
                 label="Skills"
                 multiline
                 rows={4}
-                defaultValue="Default Value"
                 fullWidth
                 variant="filled"
                 type="text"
@@ -497,8 +677,8 @@ const ClientForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-              <divider />
-              <divider />
+             
+             
              
               <List>
                 <ListItem disablePadding>
