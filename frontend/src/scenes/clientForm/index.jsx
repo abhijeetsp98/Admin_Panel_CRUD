@@ -16,7 +16,7 @@ import ListItemText from '@mui/material/ListItemText';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import { Country, State, City }  from 'country-state-city';
+import { Country, State, City } from 'country-state-city';
 
 
 const ClientForm = () => {
@@ -27,15 +27,15 @@ const ClientForm = () => {
   };
 
   const { udata, setUdata } = useContext(adddata);
-  const tempCities = City.getCitiesOfState('IN','MH')
+  const tempCities = City.getCitiesOfState('IN', 'MH')
   var cities = []
-  tempCities.forEach((val)=>{
-      cities.push(val.name)
+  tempCities.forEach((val) => {
+    cities.push(val.name)
   })
   const tempStates = State.getStatesOfCountry('IN')
   var states = []
-  tempStates.forEach((val)=>{
-      states.push(val.name)
+  tempStates.forEach((val) => {
+    states.push(val.name)
   })
   // const history = useHistory();
 
@@ -260,7 +260,7 @@ const ClientForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 1" }}
               />
-               <divider></divider>
+              <divider></divider>
               <TextField
                 fullWidth
                 variant="filled"
@@ -313,7 +313,7 @@ const ClientForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-               <TextField
+              <TextField
                 fullWidth
                 variant="filled"
                 type="text"
@@ -325,7 +325,7 @@ const ClientForm = () => {
                 error={!!touched.firstName && !!errors.firstName}
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
-              /> 
+              />
 
               <List>
                 <ListItem disablePadding>
@@ -388,57 +388,39 @@ const ClientForm = () => {
                 </Select>
               </FormControl>
               <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
-                <InputLabel id="demo-simple-select-filled-label">City</InputLabel>
-                <Select
-                  labelId="demo-simple-select-filled-label"
-                  id="demo-simple-select-filled"
-                  size=""
-                  onChange={handleChange} // we want to work in controlled mode
-                  onBlur={handleBlur}
-                >
-                  {cities?.map(option => {
-                      return (
-                        <MenuItem key={option} value={option}>
-                          {option ?? option}
-                        </MenuItem>
-                      );
-                  })}
-                </Select>
-              </FormControl>
-              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
-                <InputLabel id="demo-simple-select-filled-label">State</InputLabel>
-                <Select
-                  labelId="demo-simple-select-filled-label"
-                  id="demo-simple-select-filled"
-                  size=""
-                  onChange={handleChange} // we want to work in controlled mode
-                  onBlur={handleBlur}
-                >
-                  {cities?.map(option => {
-                      return (
-                        <MenuItem key={option} value={option}>
-                          {option ?? option}
-                        </MenuItem>
-                      );
-                  })}
-                </Select>
-              </FormControl>
-              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
-                <InputLabel id="demo-simple-select-filled-label">Job Location</InputLabel>
+                <InputLabel id="demo-simple-select-filled-label">Job Location State</InputLabel>
                 <Select
                   size="10"
                   labelId="demo-simple-select-filled-label"
                   id="demo-simple-select-filled"
-                  
+
                   onChange={handleChange} // we want to work in controlled mode
                   onBlur={handleBlur}
                 >
                   {states?.map(option => {
-                      return (
-                        <MenuItem key={option} value={option}>
-                          {option ?? option}
-                        </MenuItem>
-                      );
+                    return (
+                      <MenuItem key={option} value={option}>
+                        {option ?? option}
+                      </MenuItem>
+                    );
+                  })}
+                </Select>
+              </FormControl>
+              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">Job location City</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  size=""
+                  onChange={handleChange} // we want to work in controlled mode
+                  onBlur={handleBlur}
+                >
+                  {cities?.map(option => {
+                    return (
+                      <MenuItem key={option} value={option}>
+                        {option ?? option}
+                      </MenuItem>
+                    );
                   })}
                 </Select>
               </FormControl>
@@ -454,7 +436,7 @@ const ClientForm = () => {
                   <FormControlLabel value="other" control={<Radio />} label="Other" />
                 </RadioGroup>
               </FormControl>
-              
+
               <TextField
                 fullWidth
                 variant="filled"
@@ -566,7 +548,20 @@ const ClientForm = () => {
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Montly Inhand Salary"
+                label="Max Montly Inhand Salary"
+                onBlur={handleBlur}
+                value={inpval.montlyInhand}
+                onChange={setdata}
+                name="qualification"
+                error={!!touched.firstName && !!errors.firstName}
+                helperText={touched.firstName && errors.firstName}
+                sx={{ gridColumn: "span 2" }}
+              />
+              <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Min Montly Inhand Salary"
                 onBlur={handleBlur}
                 value={inpval.montlyInhand}
                 onChange={setdata}
@@ -588,32 +583,32 @@ const ClientForm = () => {
                   <MenuItem value={4}>Any</MenuItem>
                 </Select>
               </FormControl>
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Job Timing Start"
-                onBlur={handleBlur}
-                value={inpval.jobTimingStart}
-                onChange={setdata}
-                name="qualification"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Job Timing End"
-                onBlur={handleBlur}
-                value={inpval.jobTimingEnd}
-                onChange={setdata}
-                name="qualification"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
+              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">Job Start Time</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={1}>8:00 am </MenuItem>
+                  <MenuItem value={2}>9:00 am</MenuItem>
+                  <MenuItem value={3}>10:00 am</MenuItem>
+                  <MenuItem value={4}>11:00 am</MenuItem>
+                </Select>
+              </FormControl>
+              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">Job End Time</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={1}>5:00 pm </MenuItem>
+                  <MenuItem value={2}>6:00 pm</MenuItem>
+                  <MenuItem value={3}>7:00 pm</MenuItem>
+                  <MenuItem value={4}>8:00 pm</MenuItem>
+                </Select>
+              </FormControl>
               <TextField
                 fullWidth
                 variant="filled"
@@ -627,7 +622,7 @@ const ClientForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-               <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
                 <InputLabel id="demo-simple-select-filled-label">Week Off</InputLabel>
                 <Select
                   labelId="demo-simple-select-filled-label"
@@ -677,15 +672,15 @@ const ClientForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-             
-             
-             
+
+
+
               <List>
                 <ListItem disablePadding>
                   <ListItemButton>
                     <ListItemText primary="Document" />
                   </ListItemButton>
-                  <TextField  label="Resume" type={"file"} inputProps={{accept:"application/pdf"}}/>
+                  <TextField label="Resume" type={"file"} inputProps={{ accept: "application/pdf" }} />
                 </ListItem>
               </List>
               <divider />

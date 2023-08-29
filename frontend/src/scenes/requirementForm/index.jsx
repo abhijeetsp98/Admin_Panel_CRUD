@@ -133,7 +133,7 @@ const ClientRequirementForm = () => {
 
   return (
     <Box m="20px">
-      <Header title="Create Candidate" subtitle="Create a New candidate Profile" />
+      <Header title="Create Requirement" subtitle="Create a New requirement Profile" />
 
       <Formik
         onSubmit={handleFormSubmit}
@@ -178,19 +178,18 @@ const ClientRequirementForm = () => {
                   <MenuItem value={20}>Full Time</MenuItem>
                 </Select>
               </FormControl>
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Priority level"
-                onBlur={handleBlur}
-                value={inpval.currentdesignation}
-                onChange={setdata}
-                name="currentdesignation"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
+              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">Priority level</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={30}>Urgent</MenuItem>
+                  <MenuItem value={10}>Within 1 Month</MenuItem>
+                  <MenuItem value={20}>Within 3 Month</MenuItem>
+                </Select>
+              </FormControl>
               <TextField
                 fullWidth
                 variant="filled"
@@ -239,6 +238,24 @@ const ClientRequirementForm = () => {
                   <FormControlLabel value="female" control={<Radio />} label="Married" />
                   <FormControlLabel value="male" control={<Radio />} label="Unmarried" />
                 </RadioGroup>
+              </FormControl>
+              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">Job Location State</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  size=""
+                  onChange={handleChange} // we want to work in controlled mode
+                  onBlur={handleBlur}
+                >
+                  {states?.map(option => {
+                    return (
+                      <MenuItem key={option} value={option}>
+                        {option ?? option}
+                      </MenuItem>
+                    );
+                  })}
+                </Select>
               </FormControl>
               <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
                 <InputLabel id="demo-simple-select-filled-label">Job Location City</InputLabel>
@@ -299,32 +316,35 @@ const ClientRequirementForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Min Experience"
-                onBlur={handleBlur}
-                value={inpval.qualification}
-                onChange={setdata}
-                name="qualification"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Max Experience"
-                onBlur={handleBlur}
-                value={inpval.qualification}
-                onChange={setdata}
-                name="qualification"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
+              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">Min Experience</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={1}>0</MenuItem>
+                  <MenuItem value={2}>1</MenuItem>
+                  <MenuItem value={3}>2</MenuItem>
+                  <MenuItem value={4}>3</MenuItem>
+                  <MenuItem value={5}>4</MenuItem>
+                  <MenuItem value={6}>5</MenuItem>
+                </Select>
+              </FormControl>
+              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">Max Experience</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={1}>6</MenuItem>
+                  <MenuItem value={2}>12</MenuItem>
+                  <MenuItem value={3}>18</MenuItem>
+                  <MenuItem value={4}>24</MenuItem>
+                  <MenuItem value={5}>30</MenuItem>
+                </Select>
+              </FormControl>
               <TextField
                 fullWidth
                 variant="filled"
@@ -403,7 +423,7 @@ const ClientRequirementForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-               <FormControl>
+              <FormControl>
                 <FormLabel id="demo-radio-buttons-group-label">Shift</FormLabel>
                 <RadioGroup
                   aria-labelledby="demo-radio-buttons-group-label"
@@ -415,7 +435,7 @@ const ClientRequirementForm = () => {
                   <FormControlLabel value="other" control={<Radio />} label="Rotational" />
                 </RadioGroup>
               </FormControl>
-               <TextField
+              <TextField
                 fullWidth
                 variant="filled"
                 type="text"
@@ -428,7 +448,7 @@ const ClientRequirementForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-               <TextField
+              <TextField
                 fullWidth
                 variant="filled"
                 type="text"
@@ -441,21 +461,24 @@ const ClientRequirementForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-               <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Week Off"
-                onBlur={handleBlur}
-                value={inpval.qualification}
-                onChange={setdata}
-                name="qualification"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
-             
-              
+              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">Week Off</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={1}>Sunday </MenuItem>
+                  <MenuItem value={2}>Monday</MenuItem>
+                  <MenuItem value={3}>Tuesday</MenuItem>
+                  <MenuItem value={4}>Wednesday</MenuItem>
+                  <MenuItem value={5}>Thrusday</MenuItem>
+                  <MenuItem value={6}>Friday</MenuItem>
+                  <MenuItem value={7}>Saturday</MenuItem>
+                </Select>
+              </FormControl>
+
+
               <TextField
                 id="outlined-multiline-static"
                 label="Skills"
@@ -474,7 +497,7 @@ const ClientRequirementForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-               <TextField
+              <TextField
                 id="outlined-multiline-static"
                 label="Roles and Responsibilities"
                 multiline
@@ -492,7 +515,7 @@ const ClientRequirementForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-              
+
               <List>
                 <ListItem disablePadding>
                   <ListItemButton>
@@ -501,7 +524,7 @@ const ClientRequirementForm = () => {
                   <TextField label="" type={"file"} inputProps={{ accept: "application/pdf" }} />
                 </ListItem>
               </List>
-              
+
             </Box>
             <Box display="flex" justifyContent="center" mt="20px">
               <Button type="submit" onClick={addinpdata} color="secondary" variant="contained">
