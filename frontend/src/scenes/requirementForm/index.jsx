@@ -435,32 +435,32 @@ const ClientRequirementForm = () => {
                   <FormControlLabel value="other" control={<Radio />} label="Rotational" />
                 </RadioGroup>
               </FormControl>
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Job Timing From"
-                onBlur={handleBlur}
-                value={inpval.qualification}
-                onChange={setdata}
-                name="qualification"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Job Timing to"
-                onBlur={handleBlur}
-                value={inpval.qualification}
-                onChange={setdata}
-                name="qualification"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
+              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">Job Start Time</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={1}>8:00 am </MenuItem>
+                  <MenuItem value={2}>9:00 am</MenuItem>
+                  <MenuItem value={3}>10:00 am</MenuItem>
+                  <MenuItem value={4}>11:00 am</MenuItem>
+                </Select>
+              </FormControl>
+              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">Job End Time</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={1}>5:00 pm </MenuItem>
+                  <MenuItem value={2}>6:00 pm</MenuItem>
+                  <MenuItem value={3}>7:00 pm</MenuItem>
+                  <MenuItem value={4}>8:00 pm</MenuItem>
+                </Select>
+              </FormControl>
               <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
                 <InputLabel id="demo-simple-select-filled-label">Week Off</InputLabel>
                 <Select

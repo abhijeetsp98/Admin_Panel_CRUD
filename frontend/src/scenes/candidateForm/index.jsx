@@ -452,14 +452,20 @@ const CandidateForm = () => {
                 </Select>
               </FormControl>
               <TextField
+                
+                id="outlined-multiline-static"
+                label="Other Certificate & Courses"
+                multiline
+                rows={4}
+                defaultValue="Default Value"
                 fullWidth
                 variant="filled"
                 type="text"
-                label="Other Certificate & Courses"
                 onBlur={handleBlur}
-                value={inpval.occ}
+                value={inpval.perferredlocation}
                 onChange={setdata}
-                name="occ"
+                maxRows={4}
+                name="perferredlocation"
                 error={!!touched.firstName && !!errors.firstName}
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
