@@ -188,19 +188,18 @@ const CandidateForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
-                <InputLabel id="demo-simple-select-filled-label">Maritial Status</InputLabel>
-                <Select
-                  labelId="demo-simple-select-filled-label"
-                  id="demo-simple-select-filled"
-                  onChange={handleChange}
-                >
-                  
-                  <MenuItem value={10}>Single</MenuItem>
-                  <MenuItem value={20}>Married</MenuItem>
-                  <MenuItem value={30}>Other</MenuItem>
-                </Select>
-              </FormControl>
+              <divider></divider>
+              <FormControl>
+              <FormLabel id="demo-radio-buttons-group-label">Marital Status</FormLabel>
+              <RadioGroup
+                aria-labelledby="demo-radio-buttons-group-label"
+                defaultValue="female"
+                name="radio-buttons-group"
+              >
+                <FormControlLabel value="female" control={<Radio />} label="Yes" />
+                <FormControlLabel value="male" control={<Radio />} label="No" />
+              </RadioGroup>
+            </FormControl>
               <FormControl>
               <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
               <RadioGroup
@@ -362,8 +361,7 @@ const CandidateForm = () => {
                
               
              
-               <divider/>
-               <divider/>
+               
               <List>
                 <ListItem disablePadding>
                   <ListItemButton>
@@ -443,12 +441,12 @@ const CandidateForm = () => {
                   id="demo-simple-select-filled"
                   onChange={handleChange}
                 >
-                  <MenuItem value={30}>2 yr</MenuItem>
-                  <MenuItem value={10}>3 yr</MenuItem>
-                  <MenuItem value={20}>4 yr</MenuItem>
-                  <MenuItem value={30}>5 yr</MenuItem>
-                  <MenuItem value={30}>6 yr</MenuItem>
-                  <MenuItem value={30}>7 yr</MenuItem>
+                  <MenuItem value={31}>1998 </MenuItem>
+                  <MenuItem value={12}>1999 </MenuItem>
+                  <MenuItem value={23}>2000 </MenuItem>
+                  <MenuItem value={34}>2001 </MenuItem>
+                  <MenuItem value={35}>2002 </MenuItem>
+                  <MenuItem value={36}>2003 </MenuItem>
                 </Select>
               </FormControl>
               <TextField
@@ -499,6 +497,11 @@ const CandidateForm = () => {
                   </ListItemButton>
                 </ListItem>
               </List>
+              <Box>
+              <Button type="submit" onClick={addinpdata} color="secondary" variant="contained">
+                  Fresher
+                </Button>
+              </Box>
               <divider/>
               <divider/>
 

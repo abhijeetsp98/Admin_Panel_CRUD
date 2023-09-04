@@ -410,19 +410,18 @@ const ClientRequirementForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Bonus Incentive"
-                onBlur={handleBlur}
-                value={inpval.qualification}
-                onChange={setdata}
-                name="qualification"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
+              
+              <FormControl>
+                <FormLabel id="demo-radio-buttons-group-label">Bonus Incentive</FormLabel>
+                <RadioGroup
+                  aria-labelledby="demo-radio-buttons-group-label"
+                  defaultValue="female"
+                  name="radio-buttons-group"
+                >
+                  <FormControlLabel value="female" control={<Radio />} label="Yes" />
+                  <FormControlLabel value="male" control={<Radio />} label="No" />
+                </RadioGroup>
+              </FormControl>
               <FormControl>
                 <FormLabel id="demo-radio-buttons-group-label">Shift</FormLabel>
                 <RadioGroup

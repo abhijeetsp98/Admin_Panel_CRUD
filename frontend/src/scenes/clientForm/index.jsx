@@ -375,18 +375,7 @@ const ClientForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
-                <InputLabel id="demo-simple-select-filled-label">Marital Status</InputLabel>
-                <Select
-                  labelId="demo-simple-select-filled-label"
-                  id="demo-simple-select-filled"
-                  onChange={handleChange}
-                >
-                  <MenuItem value={1}>Single </MenuItem>
-                  <MenuItem value={2}>Married</MenuItem>
-                  <MenuItem value={3}>NA</MenuItem>
-                </Select>
-              </FormControl>
+             
               <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
                 <InputLabel id="demo-simple-select-filled-label">Job Location State</InputLabel>
                 <Select
@@ -424,6 +413,18 @@ const ClientForm = () => {
                   })}
                 </Select>
               </FormControl>
+              <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
+                <InputLabel id="demo-simple-select-filled-label">Marital Status</InputLabel>
+                <Select
+                  labelId="demo-simple-select-filled-label"
+                  id="demo-simple-select-filled"
+                  onChange={handleChange}
+                >
+                  <MenuItem value={1}>Single </MenuItem>
+                  <MenuItem value={2}>Married</MenuItem>
+                  <MenuItem value={3}>NA</MenuItem>
+                </Select>
+              </FormControl>
               <FormControl>
                 <FormLabel id="demo-radio-buttons-group-label">Gender</FormLabel>
                 <RadioGroup
@@ -450,19 +451,7 @@ const ClientForm = () => {
                 helperText={touched.firstName && errors.firstName}
                 sx={{ gridColumn: "span 2" }}
               />
-              <TextField
-                fullWidth
-                variant="filled"
-                type="text"
-                label="Qualification"
-                onBlur={handleBlur}
-                value={inpval.Qualification}
-                onChange={setdata}
-                name="qualification"
-                error={!!touched.firstName && !!errors.firstName}
-                helperText={touched.firstName && errors.firstName}
-                sx={{ gridColumn: "span 2" }}
-              />
+              
               <FormControl variant="filled" sx={{ gridColumn: "span 2" }}>
                 <InputLabel id="demo-simple-select-filled-label">Min Experience</InputLabel>
                 <Select
@@ -492,6 +481,19 @@ const ClientForm = () => {
                   <MenuItem value={5}>30</MenuItem>
                 </Select>
               </FormControl>
+              <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Qualification"
+                onBlur={handleBlur}
+                value={inpval.Qualification}
+                onChange={setdata}
+                name="qualification"
+                error={!!touched.firstName && !!errors.firstName}
+                helperText={touched.firstName && errors.firstName}
+                sx={{ gridColumn: "span 2" }}
+              />
               <TextField
                 fullWidth
                 variant="filled"
